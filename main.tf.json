@@ -1,0 +1,54 @@
+{
+  "//": {
+    "metadata": {
+      "version": "0.8.3",
+      "stackName": "test-tf-1.1",
+      "backend": "local"
+    }
+  },
+  "terraform": {
+    "required_providers": {
+      "docker": {
+        "version": "~> 2.12",
+        "source": "kreuzwerker/docker"
+      }
+    }
+  },
+  "provider": {
+    "docker": [
+      {}
+    ]
+  },
+  "resource": {
+    "docker_image": {
+      "nginxImage": {
+        "keep_locally": false,
+        "name": "nginx:latest",
+        "//": {
+          "metadata": {
+            "path": "test-tf-1.1/nginxImage",
+            "uniqueId": "nginxImage"
+          }
+        }
+      }
+    },
+    "docker_container": {
+      "nginxContainer": {
+        "image": "${docker_image.nginxImage.latest}",
+        "name": "tutorial",
+        "ports": [
+          {
+            "external": 8000,
+            "internal": 80
+          }
+        ],
+        "//": {
+          "metadata": {
+            "path": "test-tf-1.1/nginxContainer",
+            "uniqueId": "nginxContainer"
+          }
+        }
+      }
+    }
+  }
+}
