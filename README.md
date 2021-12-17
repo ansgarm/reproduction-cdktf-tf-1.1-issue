@@ -14,7 +14,7 @@ terraform show test.plan # fails
 
 or run `./reproduce.sh`
 
-Fails with (on Terraform 1.1.1) (full output)
+Fails with (on Terraform 1.1.1) ([full output](./full-log.txt))
 ```
 ╷
 │ Error: Saved plan does not match the given state
